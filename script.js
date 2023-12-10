@@ -75,4 +75,21 @@ class Adventurer extends Character {
 
         this.inventory.push('snacks', '50 gold coins')
     }
+
+    // adventurers ability to scout ahead of them
+    scout(){
+        console.log(`${this.name} is scouting ahead....`);
+        super.roll();
+    }
 }
+ class Companion extends Character {
+    constructor (name, type){
+      super (name);
+      this.type = type;  
+    }
+ }
+
+
+ console.log(`==== Part 4: Class Uniforms ====`);
+
+ 
