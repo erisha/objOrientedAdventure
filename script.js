@@ -42,6 +42,7 @@ adventurer.roll();
 console.log(' ====Part 2: Class Fantasy ====');
 
 class Character {
+    static MAX_HEALTH = 100;
     constructor (name){
         this.name = name;
         this.health = 100;
@@ -67,8 +68,14 @@ console.log(robin.roll());
 console.log('==== Part 3: Class Features ====');
 
 class Adventurer extends Character {
+    static ROLES = ['Fighter', 'Healer', 'Wizard']
     constructor (name, role) {
         super (name); 
+        
+        // check if role is valid
+        if (!Adventurer.ROLES.includes(role)) {
+            throw new Error (`Error: Invalid role for adventurer: ${role}. Please choose a valid role: ${Adventurer.ROLES.join(',')} `)
+        }
 
         // adventurer specialized role
         this.role = role;
@@ -90,6 +97,29 @@ class Adventurer extends Character {
  }
 
 
- console.log(`==== Part 4: Class Uniforms ====`);
+ // part 5
+
+ class AdventurerFactory {  
+    constructor (role) {
+      this.role = role;
+      this.adventurers = [];
+    }
+    generate (name) {
+      const newAdventurer = new Adventurer(name, this.role);
+      this.adventurers.push(newAdventurer);
+    }
+    findByIndex (index) {
+      return this.adventurers[index];
+    }
+    findByName (name) {
+      return this.adventurers.find((a) => a.name === name);
+    }
+  }
+  
+  const healers = new AdventurerFactory("Healer");
+  const robin = healers.generate("Robin");
+  
+
 
  
+
