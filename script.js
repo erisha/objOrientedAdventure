@@ -117,7 +117,7 @@ class Adventurer extends Character {
   }
   
   const healers = new AdventurerFactory("Healer");
-  const robin = healers.generate("Robin");
+  const billy = healers.generate("Billy");
   
 
 
